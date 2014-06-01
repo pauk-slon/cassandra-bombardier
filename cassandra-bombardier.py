@@ -74,7 +74,7 @@ def createPartitionedDataset( num_of_rows, num_of_partitions ):
 def insertDataset( dataset ):
 
     # connect to Cassandra
-    cpool = pycassa.connect( KEY_SPACE, [HOST] )
+    cpool = pycassa.ConnectionPool( KEY_SPACE, [HOST] )
     # finding Nemo => navigating to the family
     col_family = pycassa.ColumnFamily( cpool, COLUMN_FAMILY )
     col_family.batch_insert( dataset )
